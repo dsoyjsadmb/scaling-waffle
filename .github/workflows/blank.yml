@@ -1,9 +1,8 @@
 name: FirstStep
 
 on:
-  schedule:
-    - cron: 20 */1 * * *
-  workflow_dispatch:
+  repository_dispatch:
+    types: [starting]
 
 jobs:
 
